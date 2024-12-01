@@ -43,15 +43,24 @@ function App() {
         <iframe className='form' src="https://docs.google.com/forms/d/e/1FAIpQLSdszQ0HLT0xnOUsGliF6OLj6yqXJbYTCFYpbPmreLfC1yEDHg/viewform?embedded=true">Загрузка…</iframe>
       )} 
 
-      {FEATURES.ENABLE_RECIEVE && target && (
+      {FEATURES.ENABLE_RECIEVE && (
         <div className='reciever'>
-          <div>Адреса получателя твоего подарка:</div>
-          <div>
-            <span className='ozon'>OZON:</span> <span>{target?.ozon_address}</span>
-          </div>
-          <div>
-            <span className='wb'>WB:</span> <span>{target?.wb_address}</span>
-          </div>
+          {!target && <>
+            <div>Упс, не нашел. Обратись к админу в TG</div>
+          </>}
+
+          {target && <>
+            <div>Адреса и пожелания получателя твоего подарка:</div>
+            <div>
+              <span className='ozon'>OZON:</span> <span>{target.ozon_address}</span>
+            </div>
+            <div>
+              <span className='wb'>WB:</span> <span>{target.wb_address}</span>
+            </div>
+            <div>
+              <span>Пожелания:</span> <span>{target.wishes}</span>
+            </div>
+          </>}
         </div>
       )}
 
