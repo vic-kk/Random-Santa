@@ -52,6 +52,9 @@ function App() {
           {target && <>
             <div>Адреса и пожелания получателя твоего подарка:</div>
             <div>
+              <span>Твой получатель:</span> <span>{target.gender}</span>
+            </div>
+            <div>
               <span className='ozon'>OZON:</span> <span>{target.ozon_address}</span>
             </div>
             <div>
