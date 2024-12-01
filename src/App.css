@@ -33,3 +33,18 @@
   width: 40vw;
   height: 90vh;
 }
+
+.reciever {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 2vw;
+
+  .ozon {
+    color: aqua;
+  }
+
+  .wb {
+    color: #bc75ff;
+  }
+}
