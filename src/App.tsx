@@ -26,6 +26,7 @@ function App() {
           {number}
         </p>
       </div>
+      
       <iframe className='form' src="https://docs.google.com/forms/d/e/1FAIpQLSdszQ0HLT0xnOUsGliF6OLj6yqXJbYTCFYpbPmreLfC1yEDHg/viewform?embedded=true">Загрузка…</iframe>
     </div>
   )
