@@ -30,6 +30,7 @@ function App() {
         <div>
           Твой номер сохранился на этой странице, <br/> но на всякий случай сфотографируй или запиши его
         </div>
+        
         <a className='TGLink' href="https://t.me/+zsu_94QvWxI5OGQy" target='_blank'>группа в TG</a>
       </div>
       <iframe className='form' src="https://docs.google.com/forms/d/e/1FAIpQLSdszQ0HLT0xnOUsGliF6OLj6yqXJbYTCFYpbPmreLfC1yEDHg/viewform?embedded=true">Загрузка…</iframe>
