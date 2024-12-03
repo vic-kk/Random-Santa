@@ -50,18 +50,22 @@ function App() {
           </>}
 
           {target && <>
-            <div>Адреса и пожелания получателя твоего подарка:</div>
+            <h2>Адреса и пожелания получателя твоего подарка:</h2>
             <div>
-              <span>Твой получатель:</span> <span>{target.gender}</span>
+              <div className='line-head'>Твой получатель:</div>
+              <div>{target.gender}</div>
             </div>
             <div>
-              <span className='ozon'>OZON:</span> <span>{target.ozon_address}</span>
+              <div className='ozon line-head'>OZON:</div>
+              <div>{target.ozon_address}</div>
             </div>
             <div>
-              <span className='wb'>WB:</span> <span>{target.wb_address}</span>
+              <div className='wb line-head'>WB:</div>
+              <div>{target.wb_address}</div>
             </div>
             <div>
-              <span>Пожелания:</span> <span>{target.wishes}</span>
+              <div className='line-head'>Пожелания:</div>
+              <div>{target.wishes}</div>
             </div>
           </>}
         </div>
