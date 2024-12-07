@@ -56,16 +56,16 @@ function App() {
               <div>{target.gender}</div>
             </div>
             <div>
+              <div className='line-head'>Пожелания:</div>
+              <div>{target.wishes || '-'}</div>
+            </div>
+            <div>
               <div className='ozon line-head'>OZON:</div>
               <div>{target.ozon_address}</div>
             </div>
             <div>
               <div className='wb line-head'>WB:</div>
               <div>{target.wb_address}</div>
-            </div>
-            <div>
-              <div className='line-head'>Пожелания:</div>
-              <div>{target.wishes}</div>
             </div>
           </>}
         </div>
