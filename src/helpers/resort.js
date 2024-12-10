@@ -1,4 +1,4 @@
-export const reSort = (input) => {
+const reSort = (input) => {
   let temp = [...input];
   let result = new Map;
   let iterator = 0;
@@ -24,3 +24,6 @@ export const reSort = (input) => {
 
   return result;
 };
+
+// change ids in object
+// ADDRESSES.map((item) => ({...item, id: newIds.get(item.id)}))
