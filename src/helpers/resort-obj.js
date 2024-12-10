@@ -23,7 +23,13 @@ const reSort = (input) => {
     }
   }
 
-  const newSort = input.map((item) => ({...item, id_from: newIds.get(item.id_from)}))
+  const newSort = input.map((item) => ({
+    id_from: newIds.get(item.id_from),
+    gender: item.gender,
+    wishes: item.wishes,
+    ozon_address: item.ozon_address,
+    wb_address: item.wb_address
+  }))
   // return ({
   //   newIds: newIds,
   //   newSort: newSort,

@@ -15,7 +15,7 @@ export const ADDRESSES: Readonly<Address[]> = [
     wb_address: "Уфа. Левитана 38/3"
   },
   {
-    id_from: 860130,
+    id_from: 990640,
     gender: "МУЖИК",
     wishes: "Только не кружку, больше нет места для хранения",
     ozon_address: "Новосибирск, улица Кошурникова, 24/1",
@@ -29,7 +29,7 @@ export const ADDRESSES: Readonly<Address[]> = [
     wb_address: "Шоссе в Лаврики 72к4"
   },
   {
-    id_from: 990640,
+    id_from: 206913,
     gender: "МУЖИК",
     wishes: "",
     ozon_address: "142117, обл. Московская, г. Подольск, ул. Высотная, д. 3в",
@@ -50,7 +50,7 @@ export const ADDRESSES: Readonly<Address[]> = [
     wb_address: "Смоленск, Краснинское шоссе, д 18"
   },
   {
-    id_from: 536535,
+    id_from: 860130,
     gender: "МУЖИК",
     wishes: "",
     ozon_address: "Минск, проспект Дзержинского, 90",
@@ -71,7 +71,7 @@ export const ADDRESSES: Readonly<Address[]> = [
     wb_address: "Самара. ул. Калинина 14"
   },
   {
-    id_from: 206913,
+    id_from: 536535,
     gender: "МУЖИК",
     wishes: "Хочу топчики с вами пилить на НГ",
     ozon_address: "Нет",

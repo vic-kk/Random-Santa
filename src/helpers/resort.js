@@ -27,3 +27,5 @@ const reSort = (input) => {
 
 // change ids in object
 // ADDRESSES.map((item) => ({...item, id: newIds.get(item.id)}))
+
+// initIds.filter((item, index) => ADDRESSES[index].id_from === item)
