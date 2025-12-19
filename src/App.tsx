@@ -36,7 +36,7 @@ function App() {
         <div>
           Твой номер сохранился на этой странице, <br/> но на всякий случай сфотографируй или запиши его
         </div>
-        <a className='TGLink' href="https://t.me/+zsu_94QvWxI5OGQy" target='_blank'>группа в TG</a>
+        <a className='TGLink' href="https://t.me/+omk7AIuSRmZmMjMy" target='_blank'>группа в TG</a>
       </div>
 
       {!FEATURES.ENABLE_RECIEVE && (
