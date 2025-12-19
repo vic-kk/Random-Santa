@@ -40,7 +40,7 @@ function App() {
       </div>
 
       {!FEATURES.ENABLE_RECIEVE && (
-        <iframe className='form' src="https://docs.google.com/forms/d/e/1FAIpQLSdszQ0HLT0xnOUsGliF6OLj6yqXJbYTCFYpbPmreLfC1yEDHg/viewform?embedded=true">Загрузка…</iframe>
+        <iframe className='form' src="https://forms.gle/HammbA78Cp38cuRp6">Загрузка…</iframe>
       )} 
 
       {FEATURES.ENABLE_RECIEVE && (
