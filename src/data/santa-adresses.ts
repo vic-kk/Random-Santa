@@ -50,7 +50,7 @@ export const ADDRESSES: Readonly<Address[]> = [
     wb_address: "(МИ)НЕТ"
   },
   {
-    id_santa: 985082,
+    id_santa: 762352,
     gender: "МУЖИК",
     wishes: "",
     ozon_address: "Нижегородская область, Дзержинск, улица Гайдара, 34",
