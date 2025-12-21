@@ -43,7 +43,13 @@ function App() {
         <iframe className='form' src="https://forms.gle/HammbA78Cp38cuRp6">Загрузка…</iframe>
       )} 
 
-      {FEATURES.ENABLE_RECIEVE && (
+      {FEATURES.IN_SERVICE &&
+        (
+          <div>Эльфы в работе</div>
+        )
+      }
+
+      {FEATURES.ENABLE_RECIEVE && !FEATURES.IN_SERVICE && (
         <div className='reciever'>
           {!target && <>
             <div>Упс, не нашел. Обратись к админу в TG</div>
