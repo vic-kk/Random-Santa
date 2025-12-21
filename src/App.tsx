@@ -1,7 +1,7 @@
 import santaLogo from '/santa.png'
 import './App.css'
 import { FEATURES } from './feature/flags';
-import { Address, ADDRESSES } from './data/adresses';
+import { Address, ADDRESSES } from './data/santa-adresses';
 
 const GenerateRandomSixDigitNumber = () => {
   return Math.floor(100000 + Math.random() * 900000);
@@ -19,7 +19,7 @@ function App() {
 
   const number = localStorage.getItem(LSData);
 
-  const target: targetData = FEATURES.ENABLE_RECIEVE && number ? ADDRESSES?.find((item) => item.id_from === +number) : undefined;
+  const target: targetData = FEATURES.ENABLE_RECIEVE && number ? ADDRESSES?.find((item) => item.id_santa === +number) : undefined;
 
   return (
     <div className='rowItems'>

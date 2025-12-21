@@ -1,31 +1,35 @@
 const reSort = (input) => {
-  let temp = [...input];
-  let result = new Map;
+  const initIds = input.map(item => item.id)
+  let temp = [...initIds];
+  let newIds = new Map;
   let iterator = 0;
 
   while (temp.length > 0) {
     const randomIndex = Math.floor(Math.random() * temp.length);
-    const key = input[iterator];
+    const key = initIds[iterator];
     let val = temp.splice(randomIndex, 1)[0];
 
     if (key === val) {
-      // console.warn('warn pos', input[iterator]);
-      temp = [...input];
-      result = new Map;
+      temp = [...initIds];
+      newIds = new Map;
       iterator = 0;
       val = 0;
     }
     
     if (val) {
-      result.set(key, val)
+      newIds.set(key, val)
       iterator+=1;
     }
   }
 
-  return result;
+  const newSort = input.map((item) => ({
+    id_santa: newIds.get(item.id),
+    gender: item.gender,
+    wishes: item.wishes,
+    ozon_address: item.ozon_address,
+    wb_address: item.wb_address
+  }))
+
+  const result = new Map();
+  return result.set('newSort', newSort).set('newIds', newIds);
 };
-
-// change ids in object
-// ADDRESSES.map((item) => ({...item, id: newIds.get(item.id)}))
-
-// initIds.filter((item, index) => ADDRESSES[index].id_from === item)
