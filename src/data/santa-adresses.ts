@@ -8,7 +8,7 @@ export interface Address {
 
 export const ADDRESSES: Readonly<Address[]> = [
   {
-    id_santa: 880018,
+    id_santa: 187910,
     gender: "Дивчина",
     wishes: "Пожалуйста без сладкого ( конфетки/шоколад/мед)🙏",
     ozon_address: "Лобня, Лобненский б-р, 9",
@@ -43,7 +43,7 @@ export const ADDRESSES: Readonly<Address[]> = [
     wb_address: "Самара, ул Ново-Садовая 179"
   },
   {
-    id_santa: 187910,
+    id_santa: 18700910,
     gender: "МУЖИК",
     wishes: "ОГРОМНЫЙ ХУЙ",
     ozon_address: "Москва, Магнитогорская ул., 7",
