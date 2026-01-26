@@ -1,3 +1,4 @@
+import { copyToClipboard } from '../../utils';
 import './RecipientLine.css'
 
 type LineType = 'gender' | 'wishes' | 'wb' | 'ozon';
@@ -25,7 +26,21 @@ const RecipientLine = ({ value, lineType }: RecipientLineProps) => {
         {defineSpecialStyles ? TITLES[lineType].toLocaleUpperCase() : TITLES[lineType]}:
       </div>
 
-      <div>{value}</div>
+      {!defineSpecialStyles && (
+        <div>{value}</div>
+      )}
+
+      {defineSpecialStyles && (
+        <div
+          className='clickable'
+          onClick={() => copyToClipboard(value, {
+            successMessage: `Адрес ${TITLES[lineType].toLocaleUpperCase()} скопирован`
+          })}
+          title='Нажми, чтобы скопировать'
+        >
+          {value}
+        </div>
+      )}
     </div>
   )
 }

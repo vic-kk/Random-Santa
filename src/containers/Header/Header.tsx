@@ -1,4 +1,5 @@
 import santaLogo from '/santa.png'
+import { copyToClipboard } from '../../utils';
 import './Header.css'
 
 interface HeaderProps {
@@ -7,6 +8,10 @@ interface HeaderProps {
 };
 
 const Header = ({ number, adminUrl }: HeaderProps) => {
+  const copyСonfig = {
+    successMessage: 'Ваш номер скопирован'
+  }
+
   return (
     <div>
       <p>
@@ -15,7 +20,11 @@ const Header = ({ number, adminUrl }: HeaderProps) => {
       <div className='title'>
         Твой уникальный номер:
       </div>
-      <div className="number">
+      <div
+        className="number"
+        onClick={() => copyToClipboard(number, copyСonfig)}
+        title='Нажми, чтобы скопировать'
+      >
         {number}
       </div>
       <div>

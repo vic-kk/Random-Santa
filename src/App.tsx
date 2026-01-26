@@ -1,7 +1,9 @@
-import './App.css'
 import { FEATURES } from './features';
 import { Address, ADDRESSES } from './data';
 import { GoogleForm, Header, InService, Recipient, RecipientLine } from './containers';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './App.css';
 
 type targetData = Address | undefined;
 
@@ -27,41 +29,45 @@ function App() {
   const target: targetData = FEATURES.ENABLE_RECIEVE && number ? ADDRESSES?.find((item) => item.id_santa === +number) : undefined;
 
   return (
-    <div>
-      <Header number={number} adminUrl={URLS.tgAdmin} />
+    <>
+      <div>
+        <Header number={number} adminUrl={URLS.tgAdmin} />
 
-      {!FEATURES.ENABLE_RECIEVE && (
-        <GoogleForm url={URLS.googleForm} />
-      )} 
+        {!FEATURES.ENABLE_RECIEVE && (
+          <GoogleForm url={URLS.googleForm} />
+        )} 
 
-      {FEATURES.IN_SERVICE && (
-        <InService />
-      )}
+        {FEATURES.IN_SERVICE && (
+          <InService />
+        )}
 
-      {FEATURES.ENABLE_RECIEVE && !FEATURES.IN_SERVICE && (
-        <Recipient target={target}>
-          {target && (<>
-            <RecipientLine
-              lineType='gender'
-              value={target.gender}
-            />
-            <RecipientLine
-              lineType='wishes'
-              value={target.wishes}
-            />
-            <RecipientLine
-              lineType='ozon'
-              value={target.ozon_address}
-            />
-            <RecipientLine
-              lineType='wb'
-              value={target.wb_address}
-            />
-          </>)}
-        </Recipient>
-      )}
+        {FEATURES.ENABLE_RECIEVE && !FEATURES.IN_SERVICE && (
+          <Recipient target={target}>
+            {target && (<>
+              <RecipientLine
+                lineType='gender'
+                value={target.gender}
+              />
+              <RecipientLine
+                lineType='wishes'
+                value={target.wishes}
+              />
+              <RecipientLine
+                lineType='ozon'
+                value={target.ozon_address}
+              />
+              <RecipientLine
+                lineType='wb'
+                value={target.wb_address}
+              />
+            </>)}
+          </Recipient>
+        )}
 
-    </div>
+      </div>
+
+      <ToastContainer />
+    </>
   )
 }
 

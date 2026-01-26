@@ -3,6 +3,7 @@
 }
 
 .number {
+  cursor: pointer;
   font-size: 5rem;
   font-weight: bold;
   letter-spacing: .5rem;
