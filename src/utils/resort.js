@@ -1,4 +1,4 @@
-const reSort = (input) => {
+export const reSort = (input) => {
   const initIds = input.map(item => item.id)
   let temp = [...initIds];
   let newIds = new Map;
