@@ -1,15 +1,20 @@
-import santaLogo from '/santa.png'
 import './App.css'
-import { FEATURES } from './feature/flags';
-import { Address, ADDRESSES } from './data/santa-adresses';
+import { FEATURES } from './features';
+import { Address, ADDRESSES } from './data';
+import { GoogleForm, Header, InService, Recipient, RecipientLine } from './containers';
+
+type targetData = Address | undefined;
+
+const URLS = {
+  tgAdmin: 'https://t.me/+omk7AIuSRmZmMjMy7',
+  googleForm: 'https://forms.gle/HammbA78Cp38cuRp6',
+};
+
+const LSData = 'SANTAUniqId';
 
 const GenerateRandomSixDigitNumber = () => {
   return Math.floor(100000 + Math.random() * 900000);
 }
-
-const LSData = 'SANTAUniqId';
-
-type targetData = Address | undefined;
 
 function App() {
   if (!localStorage.getItem(LSData)) {
@@ -17,64 +22,43 @@ function App() {
     localStorage.setItem(LSData, `${randomNumber}`);
   }
 
-  const number = localStorage.getItem(LSData);
+  const number = localStorage.getItem(LSData) as string;
 
   const target: targetData = FEATURES.ENABLE_RECIEVE && number ? ADDRESSES?.find((item) => item.id_santa === +number) : undefined;
 
   return (
-    <div className='rowItems'>
-      <div>
-        <p>
-          <img src={santaLogo} className="logo" width={250} alt="santa logo" />
-        </p>
-        <div className='numberTitle'>
-          Твой уникальный номер:
-        </div>
-        <div className="number">
-          {number}
-        </div>
-        <div>
-          Твой номер сохранился на этой странице, <br/> но на всякий случай сфотографируй или запиши его
-        </div>
-        <a className='TGLink' href="https://t.me/+omk7AIuSRmZmMjMy" target='_blank'>группа в TG</a>
-      </div>
+    <div>
+      <Header number={number} adminUrl={URLS.tgAdmin} />
 
       {!FEATURES.ENABLE_RECIEVE && (
-        <iframe className='form' src="https://forms.gle/HammbA78Cp38cuRp6">Загрузка…</iframe>
+        <GoogleForm url={URLS.googleForm} />
       )} 
 
-      {FEATURES.IN_SERVICE &&
-        (
-          <div>Эльфы в работе</div>
-        )
-      }
+      {FEATURES.IN_SERVICE && (
+        <InService />
+      )}
 
       {FEATURES.ENABLE_RECIEVE && !FEATURES.IN_SERVICE && (
-        <div className='reciever'>
-          {!target && <>
-            <div>Упс, не нашел. Обратись к админу в TG</div>
-          </>}
-
-          {target && <>
-            <h2>Адреса и пожелания получателя твоего подарка:</h2>
-            <div>
-              <div className='line-head'>Твой получатель:</div>
-              <div>{target.gender}</div>
-            </div>
-            <div>
-              <div className='line-head'>Пожелания:</div>
-              <div>{target.wishes || '-'}</div>
-            </div>
-            <div>
-              <div className='ozon line-head'>OZON:</div>
-              <div>{target.ozon_address}</div>
-            </div>
-            <div>
-              <div className='wb line-head'>WB:</div>
-              <div>{target.wb_address}</div>
-            </div>
-          </>}
-        </div>
+        <Recipient target={target}>
+          {target && (<>
+            <RecipientLine
+              lineType='gender'
+              value={target.gender}
+            />
+            <RecipientLine
+              lineType='wishes'
+              value={target.wishes}
+            />
+            <RecipientLine
+              lineType='ozon'
+              value={target.ozon_address}
+            />
+            <RecipientLine
+              lineType='wb'
+              value={target.wb_address}
+            />
+          </>)}
+        </Recipient>
       )}
 
     </div>

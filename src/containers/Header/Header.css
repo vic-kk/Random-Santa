@@ -1,0 +1,15 @@
+.title {
+  font-size: 2rem;
+}
+
+.number {
+  font-size: 5rem;
+  font-weight: bold;
+  letter-spacing: .5rem;
+  color: rgb(255, 220, 63);
+}
+
+.tg {
+  font-size: 1.2rem;
+  color: rgb(0, 191, 255);
+}

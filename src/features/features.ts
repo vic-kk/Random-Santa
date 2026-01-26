@@ -1,4 +1,4 @@
 export const FEATURES = {
-  ENABLE_RECIEVE: true,
   IN_SERVICE: false,
+  ENABLE_RECIEVE: true,
 }
