@@ -1,4 +1,4 @@
-export type { Address } from './adresses';
+export type { Address } from './addresses';
 
-export { ADDRESSES } from './adresses';
+export { ADDRESSES } from './addresses';
 

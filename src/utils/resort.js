@@ -1,4 +1,4 @@
-export const reSort = (input) => {
+export const reSort = (input, full) => {
   const initIds = input.map(item => item.id)
   let temp = [...initIds];
   let newIds = new Map;
@@ -29,6 +29,10 @@ export const reSort = (input) => {
     ozon_address: item.ozon_address,
     wb_address: item.wb_address
   }))
+
+  if (!full) {
+    return newSort;
+  }
 
   const result = new Map();
   return result.set('newSort', newSort).set('newIds', newIds);
