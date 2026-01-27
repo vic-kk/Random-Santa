@@ -3,6 +3,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { reSort } from '../src/utils/resort.js';
 
+const fileName = '25-26';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -11,7 +13,7 @@ const main = async () => {
   
   // Пути к файлам
   const rootDir = path.join(__dirname, '..');
-  const pureFilePath = path.join(rootDir, '_local', 'pure.js');
+  const pureFilePath = path.join(rootDir, '_local', `pure_20${fileName}.js`);
   const outputFilePath = path.join(rootDir, 'src', 'data', 'addresses.ts');
   const backupDir = path.join(rootDir, '_local', 'backups');
   
@@ -59,7 +61,7 @@ const main = async () => {
         .replace(/[:.]/g, '-')
         .replace('T', '_')
         .split('.')[0];
-      const backupFileName = `adresses_backup_${timestamp}.ts`;
+      const backupFileName = `adresses_(pure_20${fileName})_${timestamp}.ts`;
       const backupPath = path.join(backupDir, backupFileName);
       
       // Копируем старый файл
