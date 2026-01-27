@@ -66,7 +66,7 @@ const main = async () => {
       
       // Копируем старый файл
       fs.copyFileSync(outputFilePath, backupPath);
-      console.log(`✅ Бэкап создан: ${backupFileName}\n`);
+      console.log(`✅ Бэкап создан:\n${backupPath}\n`);
     }
     
     // ✨ Формируем содержимое нового файла
