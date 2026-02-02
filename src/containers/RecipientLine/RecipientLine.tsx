@@ -1,4 +1,4 @@
-import { copyToClipboard } from '../../utils';
+import { CopyToClipboard } from '../../containers';
 import './RecipientLine.css'
 
 type LineType = 'gender' | 'wishes' | 'wb' | 'ozon';
@@ -31,15 +31,12 @@ const RecipientLine = ({ value, lineType }: RecipientLineProps) => {
       )}
 
       {defineSpecialStyles && (
-        <div
-          className='clickable'
-          onClick={() => copyToClipboard(value, {
-            successMessage: `Адрес ${TITLES[lineType].toLocaleUpperCase()} скопирован`
-          })}
-          title='Нажми, чтобы скопировать'
+        <CopyToClipboard
+          value={value}
+          successMessage={`Адрес ${TITLES[lineType].toLocaleUpperCase()} скопирован`}
         >
           {value}
-        </div>
+        </CopyToClipboard>
       )}
     </div>
   )

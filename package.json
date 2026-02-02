@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "resort": "node node_scripts/node.js"
+    "santa": "node node_scripts/santa-resort.js"
   },
   "dependencies": {
     "react": "^18.3.1",

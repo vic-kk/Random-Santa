@@ -1,17 +1,13 @@
 import santaLogo from '/santa.png'
-import { copyToClipboard } from '../../utils';
+import { CopyToClipboard } from '../../containers';
 import './Header.css'
 
 interface HeaderProps {
-  number: string;
+  number: number;
   adminUrl: string;
 };
 
 const Header = ({ number, adminUrl }: HeaderProps) => {
-  const copyСonfig = {
-    successMessage: 'Ваш номер скопирован'
-  }
-
   return (
     <div>
       <p>
@@ -20,12 +16,13 @@ const Header = ({ number, adminUrl }: HeaderProps) => {
       <div className='title'>
         Твой уникальный номер:
       </div>
-      <div
-        className="number"
-        onClick={() => copyToClipboard(number, copyСonfig)}
-        title='Нажми, чтобы скопировать'
-      >
-        {number}
+      <div className="number">
+        <CopyToClipboard
+          value={number.toString()}
+          successMessage='Ваш номер скопирован'
+        >
+          {number}
+        </CopyToClipboard>
       </div>
       <div>
         Твой номер уже сохранен на этой странице, но, <br/>

@@ -9,7 +9,7 @@ type targetData = Address | undefined;
 
 const URLS = {
   tgAdmin: 'https://t.me/+omk7AIuSRmZmMjMy7',
-  googleForm: 'https://forms.gle/HammbA78Cp38cuRp6',
+  googleForm: 'https://forms.gle/ichPY3Vzn1FY5fUL9',
 };
 
 const LSData = 'SANTAUniqId';
@@ -24,47 +24,48 @@ function App() {
     localStorage.setItem(LSData, `${randomNumber}`);
   }
 
-  const number = localStorage.getItem(LSData) as string;
+  const number = parseInt((localStorage?.getItem(LSData) as string), 10);
 
-  const target: targetData = FEATURES.ENABLE_RECIEVE && number ? ADDRESSES?.find((item) => item.id_santa === +number) : undefined;
+  const target: targetData = ADDRESSES?.get(+number);
 
   return (
     <>
-      <div>
-        <Header number={number} adminUrl={URLS.tgAdmin} />
+      <Header number={number} adminUrl={URLS.tgAdmin} />
 
-        {!FEATURES.ENABLE_RECIEVE && (
-          <GoogleForm url={URLS.googleForm} />
-        )} 
+      {FEATURES.IN_SERVICE && (
+        <InService />
+      )}
 
-        {FEATURES.IN_SERVICE && (
-          <InService />
-        )}
+      {!FEATURES.IN_SERVICE && (
+        <>
+          {!FEATURES.SANTA_READY && (
+            <GoogleForm url={URLS.googleForm} />
+          )} 
 
-        {FEATURES.ENABLE_RECIEVE && !FEATURES.IN_SERVICE && (
-          <Recipient target={target}>
-            {target && (<>
-              <RecipientLine
-                lineType='gender'
-                value={target.gender}
-              />
-              <RecipientLine
-                lineType='wishes'
-                value={target.wishes}
-              />
-              <RecipientLine
-                lineType='ozon'
-                value={target.ozon_address}
-              />
-              <RecipientLine
-                lineType='wb'
-                value={target.wb_address}
-              />
-            </>)}
-          </Recipient>
-        )}
-
-      </div>
+          {FEATURES.SANTA_READY &&  (
+            <Recipient target={target}>
+              {target && (<>
+                <RecipientLine
+                  lineType='gender'
+                  value={target.gender}
+                />
+                <RecipientLine
+                  lineType='wishes'
+                  value={target.wishes}
+                />
+                <RecipientLine
+                  lineType='ozon'
+                  value={target.ozon_address}
+                />
+                <RecipientLine
+                  lineType='wb'
+                  value={target.wb_address}
+                />
+              </>)}
+            </Recipient>
+          )}
+        </>
+      )}
 
       <ToastContainer />
     </>

@@ -1,39 +1,31 @@
-export const reSort = (input, full) => {
-  const initIds = input.map(item => item.id)
-  let temp = [...initIds];
-  let newIds = new Map;
-  let iterator = 0;
-
-  while (temp.length > 0) {
-    const randomIndex = Math.floor(Math.random() * temp.length);
-    const key = initIds[iterator];
-    let val = temp.splice(randomIndex, 1)[0];
-
-    if (key === val) {
-      temp = [...initIds];
-      newIds = new Map;
-      iterator = 0;
-      val = 0;
-    }
-    
-    if (val) {
-      newIds.set(key, val)
-      iterator+=1;
-    }
+export const reSortDerangement = (input, full) => {
+  const ids = input.map(item => item.id);
+  const n = ids.length;
+  
+  if (n < 2) throw new Error('Нужно минимум 2 участника');
+  
+  // Алгоритм Саттоло для случайного беспорядка (derangement)
+  // Гарантирует, что ни один элемент не останется на своём месте
+  const receivers = [...ids];
+  
+  // Алгоритм Саттоло - модификация Фишера-Йетса
+  for (let i = n - 1; i > 0; i--) {
+    // Выбираем j из [0, i-1] (не включая i!)
+    const j = Math.floor(Math.random() * i);
+    [receivers[i], receivers[j]] = [receivers[j], receivers[i]];
   }
-
-  const newSort = input.map((item) => ({
-    id_santa: newIds.get(item.id),
-    gender: item.gender,
-    wishes: item.wishes,
-    ozon_address: item.ozon_address,
-    wb_address: item.wb_address
-  }))
-
-  if (!full) {
-    return newSort;
+  
+  // Дополнительная проверка для n=2 (особый случай)
+  if (n === 2 && receivers[0] === ids[0]) {
+    [receivers[0], receivers[1]] = [receivers[1], receivers[0]];
   }
-
-  const result = new Map();
-  return result.set('newSort', newSort).set('newIds', newIds);
+  
+  // Создаём результат
+  const newIds = new Map(ids.map((id, i) => [id, receivers[i]]));
+  const newSort = input.map((item, i) => ({
+    id_santa: receivers[i],
+    ...item
+  }));
+  
+  return full ? { newSort, newIds } : newSort;
 };
