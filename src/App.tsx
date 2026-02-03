@@ -7,6 +7,8 @@ import './App.css';
 
 type targetData = Address | undefined;
 
+type LineType = 'gender' | 'wishes' | 'ozon_address' | 'wb_address';
+
 const URLS = {
   tgAdmin: 'https://t.me/+omk7AIuSRmZmMjMy7',
   googleForm: 'https://forms.gle/ichPY3Vzn1FY5fUL9',
@@ -42,26 +44,16 @@ function App() {
             <GoogleForm url={URLS.googleForm} />
           )} 
 
-          {FEATURES.SANTA_READY &&  (
+          {FEATURES.SANTA_READY && (
             <Recipient target={target}>
-              {target && (<>
-                <RecipientLine
-                  lineType='gender'
-                  value={target.gender}
-                />
-                <RecipientLine
-                  lineType='wishes'
-                  value={target.wishes}
-                />
-                <RecipientLine
-                  lineType='ozon'
-                  value={target.ozon_address}
-                />
-                <RecipientLine
-                  lineType='wb'
-                  value={target.wb_address}
-                />
-              </>)}
+              {target && 
+                Object.entries(target).map(([key, value]) => (
+                  <RecipientLine
+                    lineType={key as LineType}
+                    value={value}
+                  />
+                ))
+              }
             </Recipient>
           )}
         </>

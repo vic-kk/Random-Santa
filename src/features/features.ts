@@ -1,4 +1,4 @@
 export const FEATURES = {
-  IN_SERVICE: true,
-  SANTA_READY: false,
+  IN_SERVICE: false,
+  SANTA_READY: true,
 }

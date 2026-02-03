@@ -1,7 +1,7 @@
 import { CopyToClipboard } from '../../containers';
 import './RecipientLine.css'
 
-type LineType = 'gender' | 'wishes' | 'wb' | 'ozon';
+type LineType = 'gender' | 'wishes' | 'ozon_address' | 'wb_address';
 
 interface RecipientLineProps {
   value: string;
@@ -13,12 +13,12 @@ const TITLES:{
 } = {
   gender: 'Твой получатель',
   wishes: 'Пожелания',
-  ozon: 'ozon',
-  wb: 'wb',
+  ozon_address: 'ozon',
+  wb_address: 'wb',
 }
 
 const RecipientLine = ({ value, lineType }: RecipientLineProps) => {
-  const defineSpecialStyles = (lineType === TITLES.wb || lineType === TITLES.ozon) ? lineType : '';
+  const defineSpecialStyles = (TITLES[lineType] === TITLES.ozon_address || TITLES[lineType] === TITLES.wb_address) ? lineType : '';
 
   return (
     <div>
