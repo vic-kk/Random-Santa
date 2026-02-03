@@ -21,7 +21,7 @@ const LINKS: Partial<Record<LineType, string>> = {
 }
 
 const RecipientLine = ({ value, lineType }: RecipientLineProps) => {
-  const defineSpecialStyles = (TITLES[lineType] === TITLES.ozon_address || TITLES[lineType] === TITLES.wb_address) ? lineType : '';
+  const defineSpecialStyles = LINKS[lineType] ? lineType : '';
 
   return (
     <div>
@@ -35,9 +35,7 @@ const RecipientLine = ({ value, lineType }: RecipientLineProps) => {
               {TITLES[lineType].toLocaleUpperCase()}:
           </a>
         ) : (
-          <>
-            {TITLES[lineType]}:
-          </>
+          `${TITLES[lineType]}:`
         )}
       </div>
       
