@@ -4,6 +4,7 @@ import { GoogleForm, Header, InService, Recipient, RecipientLine } from './conta
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
+import { useMemo } from 'react';
 
 type TargetUserData = DeliveryData | undefined;
 
@@ -30,6 +31,18 @@ function App() {
 
   const target: TargetUserData = DELIVERY_DATA?.get(number);
 
+  const RenderRecipientLines = useMemo(() => {
+    if (!target) return null;
+
+    return (Object.entries(target) as TargetEntry[]).map(([key, value]) => (
+      <RecipientLine
+        key={key}
+        field={key}
+        value={value}
+      />
+    ));
+  }, [target]);
+
   return (
     <>
       <Header number={number} adminUrl={URLS.tgAdmin} />
@@ -46,14 +59,7 @@ function App() {
 
           {FEATURES.SANTA_READY && (
             <Recipient target={target}>
-              {target && 
-                (Object.entries(target) as TargetEntry[]).map(([key, value]) => (
-                  <RecipientLine
-                    field={key}
-                    value={value}
-                  />
-                ))
-              }
+              {RenderRecipientLines}
             </Recipient>
           )}
         </>

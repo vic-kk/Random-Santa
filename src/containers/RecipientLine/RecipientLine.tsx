@@ -31,7 +31,11 @@ const RecipientLine = ({ value, field }: RecipientLineProps) => {
   return (
     <div>
       <div className="line-head">
-        {defineSpecialStyles ? (
+        {!defineSpecialStyles && 
+          `${TITLES[field]}:`
+        }
+
+        {defineSpecialStyles && (
           <a
             className={defineSpecialStyles}
             href={LINKS[field]}
@@ -39,12 +43,9 @@ const RecipientLine = ({ value, field }: RecipientLineProps) => {
             target='_blank'>
               {TITLES[field].toLocaleUpperCase()}:
           </a>
-        ) : (
-          `${TITLES[field]}:`
         )}
       </div>
-      
-      
+            
       {!defineSpecialStyles && (
         <div>{value}</div>
       )}
