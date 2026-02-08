@@ -26,18 +26,18 @@ function isLinkKey(key: keyof DeliveryData): key is keyof Links {
 }
 
 const RecipientLine = ({ value, field }: RecipientLineProps) => {
-  const defineSpecialStyles = isLinkKey(field) ? field : '';
+  const isDeliveryLink = isLinkKey(field) ? field : '';
 
   return (
     <div>
       <div className="line-head">
-        {!defineSpecialStyles && 
+        {!isDeliveryLink &&
           `${TITLES[field]}:`
         }
 
-        {defineSpecialStyles && (
+        {isDeliveryLink && (
           <a
-            className={defineSpecialStyles}
+            className={isDeliveryLink}
             href={LINKS[field]}
             title={`Перейти на сайт ${TITLES[field]}`}
             target='_blank'>
@@ -46,16 +46,16 @@ const RecipientLine = ({ value, field }: RecipientLineProps) => {
         )}
       </div>
             
-      {!defineSpecialStyles && (
+      {!isDeliveryLink && (
         <div>{value}</div>
       )}
 
-      {defineSpecialStyles && (
+      {isDeliveryLink && (
         <CopyToClipboard
           value={value}
           successMessage={`Адрес ${TITLES[field].toLocaleUpperCase()} скопирован`}
         >
-          {value}
+          📑 {value}
         </CopyToClipboard>
       )}
     </div>
