@@ -55,7 +55,7 @@ const RecipientLine = ({ value, field }: RecipientLineProps) => {
           value={value}
           successMessage={`Адрес ${TITLES[field].toLocaleUpperCase()} скопирован`}
         >
-          📑 {value}
+          {value}
         </CopyToClipboard>
       )}
     </div>

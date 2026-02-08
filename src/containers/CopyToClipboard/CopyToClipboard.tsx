@@ -21,7 +21,7 @@ const CopyToClipboard = ({ title = 'Нажми, чтобы скопироват�
       onClick={() => clickHandler()}
       title={title}
     >
-      {children}
+      📑 {children}
     </div>
   )
 }
