@@ -6,9 +6,10 @@ interface CopyToClipboardProps {
   title?: string;
   successMessage?: string;
   value: string;
+  showEmoji?: boolean;
 };
 
-const CopyToClipboard = ({ title = 'Нажми, чтобы скопировать', successMessage, value, children }: PropsWithChildren<CopyToClipboardProps>) => {
+const CopyToClipboard = ({ title = 'Нажми, чтобы скопировать', successMessage, value, showEmoji, children }: PropsWithChildren<CopyToClipboardProps>) => {
   const copyСonfig = {
     successMessage: successMessage,
   }
@@ -21,7 +22,8 @@ const CopyToClipboard = ({ title = 'Нажми, чтобы скопироват�
       onClick={() => clickHandler()}
       title={title}
     >
-      📑 {children}
+      {showEmoji && <span>📑 </span>}
+      {children}
     </div>
   )
 }
