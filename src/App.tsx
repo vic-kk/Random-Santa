@@ -7,7 +7,7 @@ import './App.css';
 
 type TargetUserData = DeliveryData | undefined;
 
-type TargetEntries = [DeliveryDataKeys, DeliveryDataValue];
+type TargetEntry = [DeliveryDataKeys, DeliveryDataValue];
 
 const URLS = {
   tgAdmin: 'https://t.me/+omk7AIuSRmZmMjMy7',
@@ -47,7 +47,7 @@ function App() {
           {FEATURES.SANTA_READY && (
             <Recipient target={target}>
               {target && 
-                (Object.entries(target) as TargetEntries[]).map(([key, value]) => (
+                (Object.entries(target) as TargetEntry[]).map(([key, value]) => (
                   <RecipientLine
                     field={key}
                     value={value}
