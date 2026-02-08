@@ -47,7 +47,7 @@ const RecipientLine = ({ value, field }: RecipientLineProps) => {
       </div>
             
       {!isDeliveryLink && (
-        <div>{value}</div>
+        <div>{value || "-"}</div>
       )}
 
       {isDeliveryLink && (
