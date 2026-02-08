@@ -1,11 +1,9 @@
 import { PropsWithChildren } from 'react';
-import { Address } from './../../data';
+import { DeliveryData } from './../../data';
 import './Recipient.css'
 
-type targetData = Address | undefined;
-
 interface RecipientProps {
-  target: targetData;
+  target?: DeliveryData;
 };
 
 const TEXTS = {

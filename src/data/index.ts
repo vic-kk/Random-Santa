@@ -1,4 +1,4 @@
-export type { Address } from './addresses';
+export type { DeliveryData, DeliveryDataKeys, DeliveryDataValue } from './addresses';
 
-export { ADDRESSES } from './addresses';
+export { DELIVERY_DATA } from './addresses';
 

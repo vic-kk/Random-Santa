@@ -1,27 +1,32 @@
 import { CopyToClipboard } from '../../containers';
+import { DeliveryData, DeliveryDataKeys } from '../../data';
 import './RecipientLine.css'
 
-type LineType = 'gender' | 'wishes' | 'ozon_address' | 'wb_address';
-
 interface RecipientLineProps {
+  field: DeliveryDataKeys;
   value: string;
-  lineType: LineType;
 }
 
-const TITLES: Record<LineType, string> = {
+type Links = Partial<Record<DeliveryDataKeys, string>>
+
+const TITLES: DeliveryData = {
   gender: 'Твой получатель',
   wishes: 'Пожелания',
   ozon_address: 'ozon',
   wb_address: 'wb',
 }
 
-const LINKS: Partial<Record<LineType, string>> = {
+const LINKS: Links = {
   ozon_address: 'https://www.ozon.ru/',
   wb_address: 'https://www.wildberries.ru/',
 }
 
-const RecipientLine = ({ value, lineType }: RecipientLineProps) => {
-  const defineSpecialStyles = LINKS[lineType] ? lineType : '';
+function isLinkKey(key: keyof DeliveryData): key is keyof Links {
+  return key in LINKS;
+}
+
+const RecipientLine = ({ value, field }: RecipientLineProps) => {
+  const defineSpecialStyles = isLinkKey(field) ? field : '';
 
   return (
     <div>
@@ -29,13 +34,13 @@ const RecipientLine = ({ value, lineType }: RecipientLineProps) => {
         {defineSpecialStyles ? (
           <a
             className={defineSpecialStyles}
-            href={LINKS[lineType]}
-            title={`Перейти на сайт ${TITLES[lineType]}`}
+            href={LINKS[field]}
+            title={`Перейти на сайт ${TITLES[field]}`}
             target='_blank'>
-              {TITLES[lineType].toLocaleUpperCase()}:
+              {TITLES[field].toLocaleUpperCase()}:
           </a>
         ) : (
-          `${TITLES[lineType]}:`
+          `${TITLES[field]}:`
         )}
       </div>
       
@@ -47,7 +52,7 @@ const RecipientLine = ({ value, lineType }: RecipientLineProps) => {
       {defineSpecialStyles && (
         <CopyToClipboard
           value={value}
-          successMessage={`Адрес ${TITLES[lineType].toLocaleUpperCase()} скопирован`}
+          successMessage={`Адрес ${TITLES[field].toLocaleUpperCase()} скопирован`}
         >
           {value}
         </CopyToClipboard>

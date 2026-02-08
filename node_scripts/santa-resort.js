@@ -211,7 +211,7 @@ const generateParsedFile = (data, assignments) => {
   content += '// Сгенерировано автоматически\n\n';
   
   // 1. Исходные данные
-  content += 'export const PURE_ADDRESSES = [\n';
+  content += 'export const INIT_ADDRESSES = [\n';
   data.forEach((item, i) => {
     content += `  {\n`;
     content += `    id: "${item.id}",\n`;
@@ -260,15 +260,13 @@ const generateAddressesFile = (data, assignments, newSort) => {
   content += '*/\n\n';
   
   // 2. Интерфейс для значений Map - ИЗМЕНЕНИЕ: id_santa теперь не нужен в объекте
-  content += 'export interface Address {\n';
-  content += '  gender: string;\n';
-  content += '  wishes: string;\n';
-  content += '  ozon_address: string;\n';
-  content += '  wb_address: string;\n';
-  content += '}\n\n';
-  
+  content += 'export type DeliveryDataKeys = "gender" | "wishes" | "ozon_address" | "wb_address";\n';
+  content += 'export type DeliveryDataValue = string;\n\n';
+
+  content += 'export type DeliveryData = Record<DeliveryDataKeys, DeliveryDataValue>\n\n';
+
   // 3. Создаём Map вместо массива - ИЗМЕНЕНИЕ ЗДЕСЬ
-  content += 'export const ADDRESSES = new Map<number, Address>([\n';
+  content += 'export const DELIVERY_DATA = new Map<number, DeliveryData>([\n';
   
   // Группируем записи по id_santa (ключу Map)
   const mapEntries = new Map();

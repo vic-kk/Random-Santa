@@ -1,34 +1,34 @@
 import { FEATURES } from './features';
-import { Address, ADDRESSES } from './data';
+import { DeliveryData, DeliveryDataKeys, DeliveryDataValue, DELIVERY_DATA } from './data';
 import { GoogleForm, Header, InService, Recipient, RecipientLine } from './containers';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
-type targetData = Address | undefined;
+type TargetUserData = DeliveryData | undefined;
 
-type LineType = 'gender' | 'wishes' | 'ozon_address' | 'wb_address';
+type TargetEntries = [DeliveryDataKeys, DeliveryDataValue];
 
 const URLS = {
   tgAdmin: 'https://t.me/+omk7AIuSRmZmMjMy7',
   googleForm: 'https://forms.gle/ichPY3Vzn1FY5fUL9',
 };
 
-const LSData = 'SANTAUniqId';
+const LS_KEY = 'SANTAUniqId';
 
 const GenerateRandomSixDigitNumber = () => {
   return Math.floor(100000 + Math.random() * 900000);
 }
 
 function App() {
-  if (!localStorage.getItem(LSData)) {
+  if (!localStorage.getItem(LS_KEY)) {
     const randomNumber = GenerateRandomSixDigitNumber();
-    localStorage.setItem(LSData, `${randomNumber}`);
+    localStorage.setItem(LS_KEY, `${randomNumber}`);
   }
 
-  const number = parseInt((localStorage?.getItem(LSData) as string), 10);
+  const number = parseInt((localStorage?.getItem(LS_KEY) as string), 10);
 
-  const target: targetData = ADDRESSES?.get(+number);
+  const target: TargetUserData = DELIVERY_DATA?.get(number);
 
   return (
     <>
@@ -47,9 +47,9 @@ function App() {
           {FEATURES.SANTA_READY && (
             <Recipient target={target}>
               {target && 
-                Object.entries(target).map(([key, value]) => (
+                (Object.entries(target) as TargetEntries[]).map(([key, value]) => (
                   <RecipientLine
-                    lineType={key as LineType}
+                    field={key}
                     value={value}
                   />
                 ))
