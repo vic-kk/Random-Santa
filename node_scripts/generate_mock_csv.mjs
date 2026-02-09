@@ -4,7 +4,6 @@ import { fileURLToPath } from 'url';
 
 // Получаем текущую директорию в ES модулях
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 // Функция для генерации случайной даты в заданном диапазоне
 function generateRandomDate() {
