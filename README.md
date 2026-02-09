@@ -2,108 +2,106 @@
 
 # 🎁 Random Santa
 
-Проект для автоматической жеребьёвки «Тайного Санты» на основе ответов из Google Forms.
+A project for automatically drawing Secret Santas based on responses from Google Forms.
 
-## 🚀 Быстрый старт
+## 🚀 Quick Start
 
-Основной сценарий использования для проведения розыгрыша и публикации результатов.
+The main use case is to run the draw and publish the results.
 
-0.  **Установка зависимостей**
-    ```bash
-    npm i
-    ```
+0. **Installing Dependencies**
+```bash
+npm i
+```
 
-1.  **Подготовьте данные**
-    *   Экспортируйте ответы из Google Forms в файл и переименуйте на `SANTA.csv`.
-    *   Поместите этот файл в папку `_local/` в корне проекта.
-        
-      ```js
-      // Структура проекта после подготовки:
+1. **Prepare the Data**
+* Export the responses from Google Forms to a file and rename it `SANTA.csv`.
+* Place this file in the `_local/` folder in the root of the project.
 
-      ├─📂 _local/
-      │  ├─ SANTA.csv // ваши ответы из Google Forms
-      │  └─ tip.txt
-      └─ ...
-      ```
-
-2.  **Запустите автоматическую обработку**
-    ```bash
-    npm run santa_auto
-    ```
-
-> [!TIP]
-> Команда `santa_auto` выполнит жеребьёвку и сразу создаст готовую сборку проекта для публикации на GitHub Pages.
-
----
 ```js
-/*
-  Все файлы и папки генерируется автоматически
-  Структура проекта после выполнения скрипта:
-*/
+// Project structure after preparation:
 
 ├─📂 _local/
-│  ├─📂 backups/ // опционально
-│  │  └─ addresses_2025....ts // бэкап ранней жеребьевки addresses.ts
-│  ├─📂 parced/
-│  │  └─ data.js // содержимое SANTA.csv в формате JS массива.
-│  ├─ SANTA.csv
-│  └─ tip.txt
-├─ ...
-├─📂 docs/ // собранный проект для публикации на GitHub Pages
-├─ ...
-├─📂 src/data
-│  └─ addresses.ts // файл жеребьёвки для проекта
+│ ├─ SANTA.csv // your responses from Google Forms
+│ └─ tip.txt
 └─ ...
 ```
 
+2. **Run automatic processing**
+```bash
+npm run santa_auto
+```
 
-## ⚙️ Расширенное использование
+> [!TIP]
+> The `santa_auto` command will perform the draw and immediately create a ready-to-publish project build for publishing on GitHub Pages.
 
-Эти команды полезны для отладки, внесения изменений или запуска отдельных этапов процесса.
+```js
+/*
+All files and folders are generated automatically
+Project structure after running the script:
+*/
 
-### 🔧 Ручное управление этапами
+├─📂 _local/
+│ ├─📂 backups/ // optional
+│ │ └─ addresses_2025....ts // Backup of the early draw addresses.ts
+│ ├─📂 parced/
+│ │ └─ data.js // Contents of SANTA.csv in JS array format.
+│ ├─ SANTA.csv
+│ └─ tip.txt
+├─ ...
+├─📂 docs/ // compiled project for publishing on GitHub Pages
+├─ ...
+├─📂 src/data
+│ └─ addresses.ts // project draw file
+└─ ...
+```
 
-Если нужно разделить этапы (например, проверить жеребьёвку перед сборкой), используйте команды по отдельности:
+## ⚙️ Advanced Usage
+
+These commands are useful for debugging, making changes, or running individual steps of a process.
+
+### 🔧 Manual Stage Management
+
+If you need to separate stages (for example, to test the draw before building), use the following commands separately:
 
 ```bash
-# 1. Только жеребьёвка на основе файла SANTA.csv
-# Существующая версия жеребьевки будет перенесена в _local/backups
+# 1. Run only the draw based on the SANTA.csv file
+# The existing draw version will be moved to _local/backups
 npm run santa
 
-# 2. Локальный запуск для предварительного просмотра
+# 2. Run locally for preview
 npm run dev
 
-# 3. Сборка проекта для деплоя (GitHub Pages)
+# 3. Build the project for deployment (GitHub Pages)
 npm run build
 ```
 
-### 🧪 Генерация тестовых данных
+### 🧪 Generate test data
 >[!WARNING]
->Внимание! При генерации тестовых данных файл `_local/SANTA.csv` будет полностью перезаписан. Убедитесь, что важные данные сохранены.
+>Warning! Generating test data will completely overwrite the _local/SANTA.csv file. Make sure to back up any important data.
 
-Для разработки и тестирования можно сгенерировать CSV-файл с фейковыми данными участников:
+For development and testing, you can generate a CSV file with fake participant data:
 
 ```bash
-# Полный цикл: генерация 15 записей и их жеребьёвка
+# Full cycle: generating 15 entries and drawing lots
 npm run mock_auto
 ```
 
-Отдельная генерация файлов:
+Separate file generation:
 
 ```bash
-# Генерация CSV (по умолчанию 15 записей)
+# Generating a CSV (default: 15 entries)
 npm run mock_csv
 
-# Генерация CSV с 50 записями
+# Generating a CSV with 50 entries
 npm run mock_csv:50
 
-# Генерация CSV с 200 записями
+# Generating a CSV with 200 entries
 npm run mock_csv:200
 ```
 
-## 📋 Справочник по командам (NPM Scripts)
+## 📋 Command Reference (NPM Scripts)
 
-| Команда | Действие | Типичный сценарий |
+| Command | Action | Typical Scenario |
 | :--- | :--- | :--- |
 | **`santa_auto`** | **🎯 Основная команда.** Запускает жеребьёвку и сборку для публикации. | Быстрый запуск для деплоя. |
 | **`santa`** | Запускает только жеребьёвку получателей из `SANTA.csv`. | Новая жеребьёвка. |
