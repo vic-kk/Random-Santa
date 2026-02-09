@@ -1,5 +1,5 @@
-import { CopyToClipboard } from '../../containers';
-import { DeliveryData, DeliveryDataKeys } from '../../data';
+import { CopyToClipboard } from 'src/containers';
+import { DeliveryData, DeliveryDataKeys } from 'src/data';
 import './RecipientLine.css'
 
 interface RecipientLineProps {

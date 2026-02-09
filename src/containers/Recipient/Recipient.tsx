@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { DeliveryData } from './../../data';
+import { DeliveryData } from 'src/data';
 import './Recipient.css'
 
 interface RecipientProps {

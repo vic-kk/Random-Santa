@@ -1,10 +1,10 @@
-import { FEATURES } from './features';
-import { DeliveryData, DeliveryDataKeys, DeliveryDataValue, DELIVERY_DATA } from './data';
-import { GoogleForm, Header, InService, Recipient, RecipientLine } from './containers';
+import { useMemo } from 'react';
+import { FEATURES } from 'src/features';
+import { DeliveryData, DeliveryDataKeys, DeliveryDataValue, DELIVERY_DATA } from 'src/data';
+import { GoogleForm, Header, InService, Recipient, RecipientLine } from 'src/containers';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
-import { useMemo } from 'react';
 
 type TargetUserData = DeliveryData | undefined;
 

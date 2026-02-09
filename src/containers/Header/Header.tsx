@@ -1,5 +1,5 @@
 import santaLogo from '/santa.png'
-import { CopyToClipboard } from '../../containers';
+import { CopyToClipboard } from 'src/containers';
 import './Header.css'
 
 interface HeaderProps {

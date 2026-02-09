@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { copyToClipboard } from '../../utils';
+import { copyToClipboard } from 'src/utils';
 import './CopyToClipboard.css'
 
 interface CopyToClipboardProps {
