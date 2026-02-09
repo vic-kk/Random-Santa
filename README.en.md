@@ -7,27 +7,27 @@ A project for automatically drawing Secret Santas based on responses from Google
 The main use case is to run the draw and publish the results.
 
 0. **Installing Dependencies**
-```bash
-npm i
-```
+    ```bash
+    npm i
+    ```
 
 1. **Prepare the Data**
-* Export the responses from Google Forms to a file and rename it `SANTA.csv`.
-* Place this file in the `_local/` folder in the root of the project.
+    * Export the responses from Google Forms to a file and rename it `SANTA.csv`.
+    * Place this file in the `_local/` folder in the root of the project.
 
-```js
-// Project structure after preparation:
+    ```js
+    // Project structure after preparation:
 
-├─📂 _local/
-│ ├─ SANTA.csv // your responses from Google Forms
-│ └─ tip.txt
-└─ ...
-```
+    ├─📂 _local/
+    │ ├─ SANTA.csv // your responses from Google Forms
+    │ └─ tip.txt
+    └─ ...
+    ```
 
 2. **Run automatic processing**
-```bash
-npm run santa_auto
-```
+      ```bash
+      npm run santa_auto
+      ```
 
 > [!TIP]
 > The `santa_auto` command will perform the draw and immediately create a ready-to-publish project build for publishing on GitHub Pages.
