@@ -1,3 +1,6 @@
+_local/*
+!_local/tip.txt
+
 # Logs
 logs
 *.log
@@ -21,6 +24,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-_local/*
-!_local/tip.txt

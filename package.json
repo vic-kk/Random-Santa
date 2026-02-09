@@ -8,7 +8,15 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "santa": "node node_scripts/santa-resort.js"
+
+    "santa": "node node_scripts/santa_resort.js",
+    "santa_auto": "npm run santa && npm run build",
+
+    "mock_csv": "node node_scripts/generate_mock_csv.js",
+    "mock_csv:50": "node node_scripts/generate_mock_csv.js 50",
+    "mock_csv:200": "node node_scripts/generate_mock_csv.js 200",
+
+    "mock_auto": "npm run mock_csv && npm run santa"
   },
   "dependencies": {
     "react": "^18.3.1",
