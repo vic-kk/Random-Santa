@@ -15,12 +15,12 @@ The main use case is to run the draw and publish the results.
     * Export the responses from Google Forms to a file and rename it `SANTA.csv`.
     * Place this file in the `_local/` folder in the root of the project.
 
-    ```js
-    // Project structure after preparation:
+    ```shell
+    # Project structure after preparation:
 
     ├─📂 _local/
-    │ ├─ SANTA.csv // your responses from Google Forms
-    │ └─ tip.txt
+    │  ├─ SANTA.csv # your responses from Google Forms
+    │  └─ tip.txt
     └─ ...
     ```
 
@@ -32,24 +32,20 @@ The main use case is to run the draw and publish the results.
 > [!TIP]
 > The `santa_auto` command will perform the draw and immediately create a ready-to-publish project build for publishing on GitHub Pages.
 
-```js
-/*
-All files and folders are generated automatically
-Project structure after running the script:
-*/
+```shell
+# All files and folders are generated automatically
+# Project structure after running the script:
 
 ├─📂 _local/
-│ ├─📂 backups/ // optional
-│ │ └─ addresses_2025....ts // Backup of the early draw addresses.ts
-│ ├─📂 parced/
-│ │ └─ data.js // Contents of SANTA.csv in JS array format.
-│ ├─ SANTA.csv
-│ └─ tip.txt
-├─ ...
-├─📂 docs/ // compiled project for publishing on GitHub Pages
-├─ ...
+│  ├─📂 backups/ # created automatically
+│  │  └─ addresses_2025....ts # backup of the early draw addresses.ts
+│  ├─📂 parced/
+│  │  └─ data.js # contents of SANTA.csv in JS array format.
+│  ├─ SANTA.csv
+│  └─ tip.txt
+├─📂 docs/ # compiled project for publishing on GitHub Pages
 ├─📂 src/data
-│ └─ addresses.ts // project draw file
+│  └─ addresses.ts # project draw file
 └─ ...
 ```
 
