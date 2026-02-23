@@ -1,9 +1,7 @@
 import { writeFileSync } from 'fs';
-import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-// Получаем текущую директорию в ES модулях
-const __filename = fileURLToPath(import.meta.url);
+const CSVPaths = `_local/SANTA.csv`;
 
 // Функция для генерации случайной даты в заданном диапазоне
 function generateRandomDate() {
@@ -167,10 +165,8 @@ async function main() {
     }
   }
   
-  const filename = `_local/SANTA.csv`;
-  
   try {
-    createCSVFile(filename, rowCount);
+    createCSVFile(CSVPaths, rowCount);
   } catch (error) {
     console.error('Ошибка при создании файла:', error.message);
     process.exit(1);

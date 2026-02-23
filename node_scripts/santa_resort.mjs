@@ -148,20 +148,9 @@ const parseCSV = async () => {
       record[header] = values[index] || '';
     });
     
-    // Нормализуем гендер
-    let gender = 'unknown';
-    if (record['Укажи свой гендер']) {
-      const genderStr = record['Укажи свой гендер'].toLowerCase();
-      if (genderStr.includes('дивчин') || genderStr.includes('девуш')) {
-        gender = 'Дивчина';
-      } else if (genderStr.includes('мужик') || genderStr.includes('мужчин')) {
-        gender = 'МУЖИК';
-      }
-    }
-    
     pureAddresses.push({
       id: record['Укажи уникальный номер, расположенный на сайте'],
-      gender: gender,
+      gender: record['Укажи свой гендер'],
       wishes: record['Укажи свои пожелания, если хочешь. Что хотелось/не хотелось бы получить.'] || '',
       ozon_address: record['ОЗОН Адрес'] || '',
       wb_address: record['ВБ Адрес'] || '',
