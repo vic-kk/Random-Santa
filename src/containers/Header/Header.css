@@ -1,3 +1,7 @@
+.santa-header {
+  display: flex;
+}
+
 .title {
   font-size: 2rem;
 }
