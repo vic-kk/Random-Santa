@@ -9,16 +9,16 @@ interface RecipientLineProps {
 
 type Links = Partial<Record<DeliveryDataKeys, string>>
 
+const LINKS: Links = {
+  ozon_address: 'https://www.ozon.ru/',
+  wb_address: 'https://www.wildberries.ru/',
+}
+
 const TITLES: DeliveryData = {
   gender: 'Твой получатель',
   wishes: 'Пожелания',
   ozon_address: 'ozon',
   wb_address: 'wb',
-}
-
-const LINKS: Links = {
-  ozon_address: 'https://www.ozon.ru/',
-  wb_address: 'https://www.wildberries.ru/',
 }
 
 function isLinkKey(key: keyof DeliveryData): key is keyof Links {

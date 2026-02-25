@@ -17,13 +17,15 @@ const CopyToClipboard = ({ title = 'Нажми, чтобы скопироват�
   const clickHandler = () => copyToClipboard(value.toString(), copyСonfig)
 
   return (
-    <div
-      className='clickable'
-      onClick={() => clickHandler()}
-      title={title}
-    >
-      {showEmoji && <span>📑 </span>}
-      {children}
+    <div>
+      <span
+        className='clickable'
+        onClick={() => clickHandler()}
+        title={title}
+      >
+        {showEmoji && <span>⿻ </span>}
+        {children}
+      </span>
     </div>
   )
 }
